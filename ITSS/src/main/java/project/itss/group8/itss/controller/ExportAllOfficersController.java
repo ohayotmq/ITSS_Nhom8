@@ -1,5 +1,4 @@
 package project.itss.group8.itss.controller;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -7,24 +6,21 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import project.itss.group8.itss.helper.Impl.ViewAllWorkersHelperImpl;
-import project.itss.group8.itss.helper.ViewAllWorkersHelper;
-import project.itss.group8.itss.model.Worker;
 import project.itss.group8.itss.helper.Impl.OpenFileLocation;
+import project.itss.group8.itss.helper.Impl.ViewAllOfficersHelperImpl;
+import project.itss.group8.itss.helper.ViewAllOfficersHelper;
+import project.itss.group8.itss.model.Officer;
+
 import java.awt.*;
 import java.io.*;
 import java.net.URL;
@@ -35,87 +31,92 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 import java.util.function.Predicate;
 
-public class ExportAllWorkersController extends WorkspaceController implements Initializable {
-    ObservableList<Worker> workerObservableList = FXCollections.observableArrayList();
-    private static final ViewAllWorkersHelper helper = new ViewAllWorkersHelperImpl();
+public class ExportAllOfficersController extends WorkspaceController implements Initializable {
+    public static int employeeID;
     private LocalDate prevSelectedDate = null;
-    @FXML
-    private AnchorPane anchorPane;
+    ObservableList<Officer> officerObservableList = FXCollections.observableArrayList();
+    private static final ViewAllOfficersHelper helper = new ViewAllOfficersHelperImpl();
 
     @FXML
     private DatePicker date;
 
     @FXML
-    private Button filter;
+    private TableColumn<Officer, String> officerID;
 
     @FXML
-    private Text name;
+    private AnchorPane anchorPane;
 
     @FXML
-    private TableView<Worker> tableView;
+    private TableColumn<Officer, String> officerName;
 
     @FXML
-    private Button toExportOfficerView;
+    private TableColumn<Officer, Integer> officerUnit;
 
     @FXML
-    private TableColumn<Worker, Double> totalOvertime;
+    private TableView<Officer> tableView;
 
     @FXML
-    private TableColumn<Worker, Double> totalWorktime;
+    private TableColumn<Officer, Double> totalFaultHours;
 
     @FXML
-    private Label unit;
+    private TableColumn<Officer, Integer> totalWorkDays;
 
     @FXML
     private ComboBox<String> unitList;
 
     @FXML
-    private TableColumn<Worker, Button> viewDetailBtn;
-
-    @FXML
-    private TableColumn<Worker, Integer> workMonth;
-
-    @FXML
-    private TableColumn<Worker, String> workerID;
-
-    @FXML
-    private TableColumn<Worker, String> workerName;
-
-    @FXML
-    private TableColumn<Worker, Integer> workerUnit;
-
-    @FXML
-    private Button setFileLocation;
+    private TableColumn<Officer, Integer> workMonth;
 
     @FXML
     private Text pathLocation;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Setup Table
         AnchorPane.setTopAnchor(tableView, 120.0);
         AnchorPane.setLeftAnchor(tableView, 10.0);
         AnchorPane.setRightAnchor(tableView, 10.0);
         AnchorPane.setBottomAnchor(tableView, 10.0);
-        workerName.setCellValueFactory(new PropertyValueFactory<>("workerName"));
-        workerID.setCellValueFactory(new PropertyValueFactory<>("workerID"));
-        workerUnit.setCellValueFactory(new PropertyValueFactory<>("workerUnit"));
+        officerName.setCellValueFactory(new PropertyValueFactory<>("officerName"));
+        officerID.setCellValueFactory(new PropertyValueFactory<>("officerID"));
+        officerUnit.setCellValueFactory(new PropertyValueFactory<>("officerUnit"));
         workMonth.setCellValueFactory(new PropertyValueFactory<>("workMonth"));
-        totalWorktime.setCellValueFactory(new PropertyValueFactory<>("workerTotalWorkHour"));
-        totalOvertime.setCellValueFactory(new PropertyValueFactory<>("workerTotalOvertimeHour"));
-        workerObservableList = helper.workerObservableList();
-        // this.setUpWorkerItems();
-        tableView.setItems(workerObservableList);
+        totalWorkDays.setCellValueFactory(new PropertyValueFactory<>("totalWorkDays"));
+        totalFaultHours.setCellValueFactory(new PropertyValueFactory<>("totalFaultHours"));
+        officerObservableList = helper.officerObservableList();
 
+        // Set data
+        tableView.setItems(officerObservableList);
+
+        // Them listener khi click dup vao 1 row -> ra trang detail?
+        tableView.setRowFactory(tableView -> {
+            TableRow<Officer> row = new TableRow<>();
+            row.setOnMouseClicked(mouseEvent -> {
+                if(mouseEvent.getClickCount() == 2 && (!row.isEmpty())) {
+                    Officer officer = row.getItem();
+                    try {
+                        employeeID = Integer.parseInt(officer.getOfficerID());
+                        changeWorkspace("/project/itss/group8/itss/view/manager/OverViewEmployeeUnit.fxml");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row;
+        });
+
+
+        // Setup combobox
         setUpComboBoxItems();
         unitList.getSelectionModel().select("All");
         // Them listener cho combobox
         unitList.getSelectionModel().selectedItemProperty().addListener((
                 (observableValue, oldValue, newValue) -> {
-                    FilteredList<Worker> result = new FilteredList<>(workerObservableList);
-                    Predicate<Worker> constraint;
+                    FilteredList<Officer> result = new FilteredList<>(officerObservableList);
+                    Predicate<Officer> constraint;
 
                     if (newValue == "All") constraint = null;
-                    else constraint = o -> o.getWorkerUnit() == Integer.parseInt(newValue);
+                    else constraint = o -> o.getOfficerUnit() == Integer.parseInt(newValue);
 
                     result.setPredicate(constraint);
                     tableView.setItems(result);
@@ -123,78 +124,16 @@ public class ExportAllWorkersController extends WorkspaceController implements I
         ));
     }
 
-    private Callback<TableColumn<Worker, Button>, TableCell<Worker, Button>> createButtonCellFactory(String buttonText, String buttonStyleClass){
-        return column -> new TableCell<Worker, Button>() {
-            private final Button button = new Button(buttonText);
-
-            {
-                button.getStyleClass().add(buttonStyleClass);
-                button.setOnAction(event -> {
-                    Worker worker = getTableRow().getItem();
-                    // Lấy đối tượng Stage hiện tại
-                    try {
-                        String workerName = worker.getWorkerName();
-                        changeWorkspace("/project/itss/group8/itss/view/manager/OverViewEmployeeUnit.fxml");
-                    } catch (IOException e) {
-                        logger.error("Error in createButtonCellFactory ", e);
-                    }
-
-                });
-            }
-            @Override
-            protected void updateItem(Button item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(button);
-                }
-            }
-        };
-    }
-
-    private void setUpWorkerItems() {
-        Worker worker1 = new Worker(
-                "Ramy",
-                "CN123",
-                1,
-                2,
-                16.0,
-                15.0
-        );
-        Worker worker2 = new Worker(
-                "Ramu",
-                "CN124",
-                1,
-                2,
-                16.0,
-                15.0
-        );
-        Worker worker3 = new Worker(
-                "Ram",
-                "CN125",
-                1,
-                2,
-                16.0,
-                15.0
-        );
-
-        workerObservableList.add(worker1);
-        workerObservableList.add(worker2);
-        workerObservableList.add(worker3);
-    }
-
-
     @FXML
     void filterTimekeepingByMonth(ActionEvent event) {
         LocalDate localDate = date.getValue();
-        FilteredList<Worker> result = new FilteredList<>(workerObservableList);
-        Predicate<Worker> constraint;
+        FilteredList<Officer> result = new FilteredList<>(officerObservableList);
+        Predicate<Officer> constraint;
 
         if (localDate != null && prevSelectedDate != localDate) {
             prevSelectedDate = localDate;
             int currentMonth = prevSelectedDate.getMonthValue();
-            constraint = w -> w.getWorkMonth() == currentMonth;
+            constraint = o -> o.getWorkMonth() == currentMonth;
         } else constraint = null;
 
         result.setPredicate(constraint);
@@ -202,14 +141,22 @@ public class ExportAllWorkersController extends WorkspaceController implements I
     }
 
     @FXML
-    void toExportOfficerViewClicked(ActionEvent event) {
+    void toExportWorkerViewClicked(ActionEvent event) {
         try {
-            changeWorkspace("/project/itss/group8/itss/view/manager/ExportAllOfficers.fxml");
+            changeWorkspace("/project/itss/group8/itss/view/manager/ExportAllWorkers.fxml");
         } catch (Exception e) {
             logger.error("Error in ToWorkerView");
         }
     }
 
+    private void setUpComboBoxItems() {
+        SortedSet<String> items = new TreeSet<>();
+        items.add("All");
+        for (Officer o : officerObservableList) {
+            items.add(String.valueOf(o.getOfficerUnit()));
+        }
+        unitList.setItems(FXCollections.observableArrayList(items));
+    }
 
     @FXML
     void changeFileLocation(ActionEvent event) {
@@ -218,7 +165,7 @@ public class ExportAllWorkersController extends WorkspaceController implements I
 
 
 //         Set the initial directory (optional)
-         fileChooser.setInitialDirectory(new File("C:/"));
+        fileChooser.setInitialDirectory(new File("C:/"));
 
         // Set the file extension filters (optional)
         FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
@@ -271,13 +218,13 @@ public class ExportAllWorkersController extends WorkspaceController implements I
 
     private void exportToCSV(File file) throws IOException {
         try (PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8))) {
-            TableView.TableViewSelectionModel<Worker> selectionModel = tableView.getSelectionModel();
+            TableView.TableViewSelectionModel<Officer> selectionModel = tableView.getSelectionModel();
             ObservableList<TablePosition> selectedCells = selectionModel.getSelectedCells();
 
             writer.write('\ufeff');
 
             // Write table headers
-            TableColumn<Worker, ?>[] columns = new TableColumn[tableView.getColumns().size()];
+            TableColumn<Officer, ?>[] columns = new TableColumn[tableView.getColumns().size()];
             columns = tableView.getColumns().toArray(columns);
             for (int i = 0; i < columns.length; i++) {
                 writer.print(columns[i].getText());
@@ -289,10 +236,10 @@ public class ExportAllWorkersController extends WorkspaceController implements I
             }
 
             // Write table data
-            for (Worker worker : tableView.getItems()) {
+            for (Officer officer : tableView.getItems()) {
                 for (int i = 0; i < columns.length; i++) {
-                    TableColumn<Worker, ?> column = columns[i];
-                    Object cellData = column.getCellData(worker);
+                    TableColumn<Officer, ?> column = columns[i];
+                    Object cellData = column.getCellData(officer);
                     writer.print(cellData != null ? cellData.toString() : "");
                     if (i < columns.length - 1) {
                         writer.print(",");
@@ -312,7 +259,7 @@ public class ExportAllWorkersController extends WorkspaceController implements I
 
         // Write table headers
         Row headerRow = sheet.createRow(0);
-        TableColumn<Worker, ?>[] columns = new TableColumn[tableView.getColumns().size()];
+        TableColumn<Officer, ?>[] columns = new TableColumn[tableView.getColumns().size()];
         columns = tableView.getColumns().toArray(columns);
         for (int i = 0; i < columns.length; i++) {
             org.apache.poi.ss.usermodel.Cell headerCell = headerRow.createCell(i);
@@ -320,14 +267,14 @@ public class ExportAllWorkersController extends WorkspaceController implements I
         }
 
         // Write table data
-        ObservableList<Worker> items = tableView.getItems();
+        ObservableList<Officer> items = tableView.getItems();
         for (int rowIdx = 0; rowIdx < items.size(); rowIdx++) {
-            Worker worker = items.get(rowIdx);
+            Officer officer = items.get(rowIdx);
             Row row = sheet.createRow(rowIdx + 1);
             for (int colIdx = 0; colIdx < columns.length; colIdx++) {
-                TableColumn<Worker, ?> column = columns[colIdx];
+                TableColumn<Officer, ?> column = columns[colIdx];
                 Cell cell = row.createCell(colIdx);
-                Object cellData = column.getCellData(worker);
+                Object cellData = column.getCellData(officer);
                 cell.setCellValue(cellData != null ? cellData.toString() : "");
             }
         }
@@ -352,14 +299,4 @@ public class ExportAllWorkersController extends WorkspaceController implements I
             e.printStackTrace();
         }
     }
-
-    private void setUpComboBoxItems() {
-        SortedSet<String> items = new TreeSet<>();
-        items.add("All");
-        for (Worker o : workerObservableList) {
-            items.add(String.valueOf(o.getWorkerUnit()));
-        }
-        unitList.setItems(FXCollections.observableArrayList(items));
-    }
-
 }

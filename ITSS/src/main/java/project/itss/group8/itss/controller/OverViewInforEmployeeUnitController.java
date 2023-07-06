@@ -20,6 +20,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class OverViewInforEmployeeUnitController extends WorkspaceController {
+    private int employeeID;
     public static LocalDate localDate = null;
     private static final LoginService loginService = new LoginServiceImpl();
     private static final OverViewInforEmployeeUnitService service = new OverViewInforEmployeeUnitServiceImpl();
@@ -75,8 +76,13 @@ public class OverViewInforEmployeeUnitController extends WorkspaceController {
         AnchorPane.setLeftAnchor(tableView, 10.0);
         AnchorPane.setRightAnchor(tableView, 10.0);
         AnchorPane.setBottomAnchor(tableView, 10.0);
-        username.setText(loginService.getUserInfor(SearchInfEmployeeUnitController.employeeID).getName());
-        id_Employee.setText(String.valueOf(SearchInfEmployeeUnitController.employeeID));
+
+        employeeID = SearchInfEmployeeUnitController.employeeID != 0
+                ? SearchInfEmployeeUnitController.employeeID
+                : ViewAllOfficersController.employeeID;
+
+        username.setText(loginService.getUserInfor(employeeID).getName());
+        id_Employee.setText(String.valueOf(employeeID));
         time.setText(LocalDate.now().toString());
         day.setCellValueFactory(new PropertyValueFactory<>("day"));
         start.setCellValueFactory(new PropertyValueFactory<>("start"));
@@ -91,7 +97,7 @@ public class OverViewInforEmployeeUnitController extends WorkspaceController {
         requestingBtn.setCellFactory(createButtonCellFactory("Request", "request-button"));
 
         if (OverViewInforEmployeeUnitController.localDate != null)
-            timekeepingOverviews = service.getTimekeepingByMonth(OverViewInforEmployeeUnitController.localDate,startTime,endTime,SearchInfEmployeeUnitController.employeeID);
+            timekeepingOverviews = service.getTimekeepingByMonth(OverViewInforEmployeeUnitController.localDate,startTime,endTime, employeeID);
         tableView.setItems(timekeepingOverviews);
     }
     private Callback<TableColumn<TimekeepingOverview, Button>, TableCell<TimekeepingOverview, Button>> createButtonCellFactory(String buttonText, String buttonStyleClass) {
@@ -140,7 +146,7 @@ public class OverViewInforEmployeeUnitController extends WorkspaceController {
         else
             OverViewInforEmployeeUnitController.localDate = selectedDate;
 
-        timekeepingOverviews = service.getTimekeepingByMonth(OverViewInforEmployeeUnitController.localDate,startTime,endTime,SearchInfEmployeeUnitController.employeeID);
+        timekeepingOverviews = service.getTimekeepingByMonth(OverViewInforEmployeeUnitController.localDate,startTime,endTime, employeeID);
         tableView.setItems(timekeepingOverviews);
     }
 

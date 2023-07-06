@@ -6,5 +6,5 @@ import project.itss.group8.itss.model.Worker;
 public interface ViewAllWorkersSS {
     // SS stands for subsystem
     ObservableList<Worker> getAllWorkers();
-    Worker getWorker(String workerID);
+//    Worker getWorker(String workerID);
 }

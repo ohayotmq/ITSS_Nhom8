@@ -9,14 +9,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HelloApplication extends Application {
+public class GUIStarter extends Application {
 
     private  Stage mainStage;
 //  public static Stage MAIN_STAGE;
     private static final List<Stage> secondaryStages = new ArrayList<>();
     @Override
     public void start(Stage stage) throws IOException {
-    	FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
+    	FXMLLoader fxmlLoader = new FXMLLoader(GUIStarter.class.getResource("Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Login");
         stage.setScene(scene);

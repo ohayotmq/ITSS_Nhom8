@@ -42,7 +42,7 @@ public class QLNSView extends TemplateView{
 		Button btn1 = createOptionButton("Export file chấm công");
                 btn1.setOnMouseClicked(event -> {
 			try {
-				addToWorkspace("/project/itss/group8/itss/view/manager/ExportAllWorkers.fxml");
+				addToWorkspace("/project/itss/group8/itss/view/manager/ExportAllOfficers.fxml");
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
@@ -61,7 +61,7 @@ public class QLNSView extends TemplateView{
 		Button btn3 = createOptionButton("Xem thông tin chấm công tổng hợp");
 		btn3.setOnMouseClicked(event -> {
 			try {
-				addToWorkspace("/project/itss/group8/itss/view/manager/ViewAllWorkers.fxml");
+				addToWorkspace("/project/itss/group8/itss/view/manager/ViewAllOfficers.fxml");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

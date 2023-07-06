@@ -1,6 +1,6 @@
 package project.itss.group8.itss.view;
 
-import project.itss.group8.itss.HelloApplication;
+import project.itss.group8.itss.GUIStarter;
 import project.itss.group8.itss.utils.Constant;
 import project.itss.group8.itss.controller.WorkspaceController;
 import project.itss.group8.itss.controller.TemplateController;
@@ -57,7 +57,7 @@ public abstract class TemplateView {
 		MenuItem logoutMenuItem = dropdownMenuButton.getItems().get(1);
 		logoutMenuItem.setOnAction(event -> {
 			Constant.employee = null;
-			FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Login.fxml"));
+			FXMLLoader fxmlLoader = new FXMLLoader(GUIStarter.class.getResource("Login.fxml"));
 	        Scene scene = null;
 			try {
 				scene = new Scene(fxmlLoader.load());
