@@ -17,12 +17,13 @@ public class ViewAllWorkersSSImpl implements ViewAllWorkersSS {
     // SS stands for subsystem
     private static final Logger logger = LogManager.getLogger(ViewAllWorkersSSImpl.class);
     private static final String getAllWorkersQuery = "select * from worker";
-    private static final String getWorkerQuery = "select * from worker where workerName = ?";
+//    private static final String getWorkerQuery = "select * from worker where workerName = ?";
 
     @Override
     public ObservableList<Worker> getAllWorkers() {
         ObservableList<Worker> allWorkers = FXCollections.observableArrayList();
-        try{
+
+        try {
             Connection connection = Constant.pool.getConnection();
             // ps - prepared statement
             PreparedStatement ps = connection.prepareStatement(getAllWorkersQuery);
@@ -38,44 +39,45 @@ public class ViewAllWorkersSSImpl implements ViewAllWorkersSS {
                 );
                 allWorkers.add(worker);
             }
-        }catch (Exception e){
+        } catch (Exception e){
             logger.error("Error in getAllWorkers: ", e);
         }
+
         return allWorkers;
     }
 
-    @Override
-    public Worker getWorker(String workerName) {
-        Worker worker = new Worker(workerName);
-
-        try {
-            Connection connection = Constant.pool.getConnection();
-            // ps - prepared statement
-            PreparedStatement ps = connection.prepareStatement(getWorkerQuery);
-            ps.setString(1, workerName);
-            // rs - result set
-            ResultSet rs = ps.executeQuery();
-
-            if (!rs.isBeforeFirst() ) {
-                return null;
-            }
-
-            while (rs.next()) {
-                worker.setWorkerID(rs.getString(3));
-                worker.setWorkerUnit(rs.getInt(4));
-                worker.setWorkMonth(rs.getInt(5));
-                worker.setWorkerTotalWorkHour(rs.getDouble(6));
-                worker.setWorkerTotalOvertimeHour(rs.getInt(7));
-            }
-
-            rs.close();
-            ps.close();
-            Constant.pool.releaseConnection(connection);
-        } catch (SQLException ex) {
-            logger.error("getWorker name - " + workerName + " error", ex);
-            throw new RuntimeException(ex);
-        }
-
-        return worker;
-    }
+//    @Override
+//    public Worker getWorker(String workerName) {
+//        Worker worker = new Worker(workerName);
+//
+//        try {
+//            Connection connection = Constant.pool.getConnection();
+//            // ps - prepared statement
+//            PreparedStatement ps = connection.prepareStatement(getWorkerQuery);
+//            ps.setString(1, workerName);
+//            // rs - result set
+//            ResultSet rs = ps.executeQuery();
+//
+//            if (!rs.isBeforeFirst() ) {
+//                return null;
+//            }
+//
+//            while (rs.next()) {
+//                worker.setWorkerID(rs.getString(3));
+//                worker.setWorkerUnit(rs.getInt(4));
+//                worker.setWorkMonth(rs.getInt(5));
+//                worker.setWorkerTotalWorkHour(rs.getDouble(6));
+//                worker.setWorkerTotalOvertimeHour(rs.getInt(7));
+//            }
+//
+//            rs.close();
+//            ps.close();
+//            Constant.pool.releaseConnection(connection);
+//        } catch (SQLException ex) {
+//            logger.error("getWorker name - " + workerName + " error", ex);
+//            throw new RuntimeException(ex);
+//        }
+//
+//        return worker;
+//    }
 }
