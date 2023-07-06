@@ -1,5 +1,13 @@
+#container {
+    -fx-background-image: url("./march.png");
+    -fx-background-position: center center;
+    -fx-background-repeat: stretch;
+}
+
 #loginPane {
-    -fx-background-color: lightblue;
+    -fx-background-color: #e1e7ff;
+    -fx-border-radius: 12 12 12 12;
+    -fx-background-radius: 12 12 12 12;
 }
 
 #titleLabel {
@@ -18,6 +26,6 @@
 #loginButton {
     -fx-pref-width: 100px;
     -fx-pref-height: 30px;
-    -fx-background-color: lightcoral;
+    -fx-background-color: #657ef8;
     -fx-text-fill: white;
 }

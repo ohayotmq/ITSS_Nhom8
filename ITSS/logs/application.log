@@ -1326,3 +1326,157 @@ org.postgresql.util.PSQLException: FATAL: database "quanDB" does not exist
 2023-07-07 04:36:19.269 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Start login user: 20201111 , pass: 1
 2023-07-07 04:36:19.287 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Login Success
 2023-07-07 04:36:25.663 [JavaFX Application Thread] INFO  project.itss.group8.itss.subsystem.Impl.EmployeeInforRepositoryImpl - Unit ID: 1
+2023-07-07 05:54:09.211 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 05:54:09.212 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 05:55:30.592 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 05:55:30.593 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 05:55:46.567 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 05:55:46.569 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 05:58:44.477 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 05:58:44.479 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 05:59:53.181 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 05:59:53.184 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 06:01:17.385 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 06:01:17.388 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 06:01:50.013 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 06:01:50.015 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 06:03:30.773 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 06:03:30.775 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 06:09:27.737 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 06:09:27.740 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 06:09:35.174 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Start login user: 20201111 , pass: 1
+2023-07-07 06:09:35.185 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Login Success
+2023-07-07 06:14:36.959 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 06:14:36.961 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 06:14:41.018 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Start login user: 20201111 , pass: 1
+2023-07-07 06:14:41.026 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Login Success
+2023-07-07 06:15:53.976 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 06:15:53.978 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 06:15:59.316 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Start login user: 20201111 , pass: 1
+2023-07-07 06:15:59.325 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Login Success
+2023-07-07 06:16:29.317 [JavaFX Application Thread] INFO  project.itss.group8.itss.subsystem.Impl.EmployeeInforRepositoryImpl - Unit ID: 1
+2023-07-07 06:16:30.592 [JavaFX Application Thread] INFO  project.itss.group8.itss.subsystem.Impl.EmployeeInforRepositoryImpl - Unit ID: 1
+2023-07-07 06:16:36.002 [JavaFX Application Thread] INFO  project.itss.group8.itss.subsystem.Impl.EmployeeInforRepositoryImpl - Unit ID: 1
+2023-07-07 06:16:45.247 [JavaFX Application Thread] INFO  project.itss.group8.itss.subsystem.Impl.LogInforRepositoryImpl - getLogByMonth: 62
+2023-07-07 06:18:10.498 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 06:18:10.500 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 06:18:15.720 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Start login user: 20201111 , pass: 1
+2023-07-07 06:18:15.729 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Login Success
+2023-07-07 06:18:17.511 [JavaFX Application Thread] INFO  project.itss.group8.itss.subsystem.Impl.EmployeeInforRepositoryImpl - Unit ID: 1
+2023-07-07 06:18:22.937 [JavaFX Application Thread] ERROR project.itss.group8.itss.controller.SearchInfEmployeeUnitController - Error in createButtonCellFactory 
+javafx.fxml.LoadException: 
+/C:/Hoc/ITSS/ITSS_Nhom8/ITSS/target/classes/project/itss/group8/itss/view/manager/OverViewEmployeeUnit.fxml
+
+	at javafx.fxml.FXMLLoader.constructLoadException(FXMLLoader.java:2707) ~[javafx-fxml-17.0.2-win.jar:?]
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2677) ~[javafx-fxml-17.0.2-win.jar:?]
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2548) ~[javafx-fxml-17.0.2-win.jar:?]
+	at javafx.fxml.FXMLLoader.load(FXMLLoader.java:2516) ~[javafx-fxml-17.0.2-win.jar:?]
+	at project.itss.group8.itss.controller.WorkspaceController.changeWorkspace(WorkspaceController.java:25) ~[classes/:?]
+	at project.itss.group8.itss.controller.SearchInfEmployeeUnitController$1.lambda$new$0(SearchInfEmployeeUnitController.java:87) ~[classes/:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:86) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:49) ~[javafx-base-17.0.2-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.2-win.jar:?]
+	at javafx.scene.Node.fireEvent(Node.java:8792) ~[javafx-graphics-17.0.2-win.jar:?]
+	at javafx.scene.control.Button.fire(Button.java:203) ~[javafx-controls-17.0.2-win.jar:?]
+	at com.sun.javafx.scene.control.behavior.ButtonBehavior.mouseReleased(ButtonBehavior.java:208) ~[javafx-controls-17.0.2-win.jar:?]
+	at com.sun.javafx.scene.control.inputmap.InputMap.handle(InputMap.java:274) ~[javafx-controls-17.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler$NormalEventHandlerRecord.handleBubblingEvent(CompositeEventHandler.java:247) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventHandler.dispatchBubblingEvent(CompositeEventHandler.java:80) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:234) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventHandlerManager.dispatchBubblingEvent(EventHandlerManager.java:191) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.CompositeEventDispatcher.dispatchBubblingEvent(CompositeEventDispatcher.java:59) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:58) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.BasicEventDispatcher.dispatchEvent(BasicEventDispatcher.java:56) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventDispatchChainImpl.dispatchEvent(EventDispatchChainImpl.java:114) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEventImpl(EventUtil.java:74) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.event.EventUtil.fireEvent(EventUtil.java:54) ~[javafx-base-17.0.2-win.jar:?]
+	at javafx.event.Event.fireEvent(Event.java:198) ~[javafx-base-17.0.2-win.jar:?]
+	at javafx.scene.Scene$MouseHandler.process(Scene.java:3897) ~[javafx-graphics-17.0.2-win.jar:?]
+	at javafx.scene.Scene.processMouseEvent(Scene.java:1878) ~[javafx-graphics-17.0.2-win.jar:?]
+	at javafx.scene.Scene$ScenePeerListener.mouseEvent(Scene.java:2623) ~[javafx-graphics-17.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:411) ~[javafx-graphics-17.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler$MouseEventNotification.run(GlassViewEventHandler.java:301) ~[javafx-graphics-17.0.2-win.jar:?]
+	at java.security.AccessController.doPrivileged(AccessController.java:399) ~[?:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.lambda$handleMouseEvent$2(GlassViewEventHandler.java:450) ~[javafx-graphics-17.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.QuantumToolkit.runWithoutRenderLock(QuantumToolkit.java:424) ~[javafx-graphics-17.0.2-win.jar:?]
+	at com.sun.javafx.tk.quantum.GlassViewEventHandler.handleMouseEvent(GlassViewEventHandler.java:449) ~[javafx-graphics-17.0.2-win.jar:?]
+	at com.sun.glass.ui.View.handleMouseEvent(View.java:557) ~[javafx-graphics-17.0.2-win.jar:?]
+	at com.sun.glass.ui.View.notifyMouse(View.java:943) ~[javafx-graphics-17.0.2-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication._runLoop(Native Method) ~[javafx-graphics-17.0.2-win.jar:?]
+	at com.sun.glass.ui.win.WinApplication.lambda$runLoop$3(WinApplication.java:184) ~[javafx-graphics-17.0.2-win.jar:?]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+Caused by: java.lang.reflect.InvocationTargetException
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:77) ~[javafx-base-17.0.2-win.jar:?]
+	at jdk.internal.reflect.GeneratedMethodAccessor2.invoke(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:275) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84) ~[javafx-fxml-17.0.2-win.jar:?]
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2673) ~[javafx-fxml-17.0.2-win.jar:?]
+	... 69 more
+Caused by: java.lang.NullPointerException: Cannot invoke "javafx.scene.control.TableColumn.setCellFactory(javafx.util.Callback)" because "this.requestingBtn" is null
+	at project.itss.group8.itss.controller.OverViewInforEmployeeUnitController.initialize(OverViewInforEmployeeUnitController.java:97) ~[classes/:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at com.sun.javafx.reflect.Trampoline.invoke(MethodUtil.java:77) ~[javafx-base-17.0.2-win.jar:?]
+	at jdk.internal.reflect.GeneratedMethodAccessor2.invoke(Unknown Source) ~[?:?]
+	at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at com.sun.javafx.reflect.MethodUtil.invoke(MethodUtil.java:275) ~[javafx-base-17.0.2-win.jar:?]
+	at com.sun.javafx.fxml.MethodHelper.invoke(MethodHelper.java:84) ~[javafx-fxml-17.0.2-win.jar:?]
+	at javafx.fxml.FXMLLoader.loadImpl(FXMLLoader.java:2673) ~[javafx-fxml-17.0.2-win.jar:?]
+	... 69 more
+2023-07-07 06:19:04.577 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 06:19:04.579 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 06:19:08.841 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Start login user: 20201111 , pass: 1
+2023-07-07 06:19:08.851 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Login Success
+2023-07-07 06:19:09.708 [JavaFX Application Thread] INFO  project.itss.group8.itss.subsystem.Impl.EmployeeInforRepositoryImpl - Unit ID: 1
+2023-07-07 06:19:16.729 [JavaFX Application Thread] INFO  project.itss.group8.itss.subsystem.Impl.LogInforRepositoryImpl - getLogByMonth: 62
+2023-07-07 06:24:48.502 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 06:24:48.504 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 06:24:53.111 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Start login user: 20201111 , pass: 1
+2023-07-07 06:24:53.120 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Login Success
+2023-07-07 06:58:25.144 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 06:58:25.153 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 06:58:32.013 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Start login user: 20201111 , pass: 1
+2023-07-07 06:58:32.023 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Login Success
+2023-07-07 06:58:34.299 [JavaFX Application Thread] INFO  project.itss.group8.itss.subsystem.Impl.EmployeeInforRepositoryImpl - Unit ID: 1

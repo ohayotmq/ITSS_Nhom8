@@ -7,11 +7,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-
 <?import javafx.scene.text.Text?>
-<?import javafx.scene.text.Font?>
-<AnchorPane prefHeight="614.0" prefWidth="753.0" fx:id="anchorPane"
-            xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.itss.group8.itss.controller.OverViewInforEmployeeUnitController">
+
+<AnchorPane fx:id="anchorPane" prefHeight="614.0" prefWidth="753.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.itss.group8.itss.controller.OverViewInforEmployeeUnitController">
     <children>
 
         <TableView fx:id="tableView" layoutX="1.0" layoutY="137.0" prefHeight="505.0" prefWidth="752.0">
@@ -22,7 +20,6 @@
                 <TableColumn fx:id="comeLate" prefWidth="75.0" text="Đi muộn" />
                 <TableColumn fx:id="returnEarly" prefWidth="214.99993896484375" text="Về sớm" />
                 <TableColumn fx:id="viewingDetailButton" minWidth="0.0" prefWidth="0.0" />
-                <TableColumn fx:id="requestingBtn" prefWidth="75.0" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -35,13 +32,12 @@
                 <Button fx:id="filter" layoutX="231.0" layoutY="42.0" mnemonicParsing="false" onAction="#filterTimekeepingByMonth" prefHeight="26.0" prefWidth="127.0" text="Lọc" />
             </children>
         </Pane>
-        <Text layoutX="75.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên  :"/>
-        <Text fx:id="username" layoutX="140.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0"/>
-        <Text layoutX="75.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID :"/>
-        <Text fx:id="id_Employee" layoutX="140.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0"/>
-        <Text layoutX="75.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày :"/>
-        <Text fx:id="time" layoutX="140.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0"/>
-        <Button layoutX="649.0" layoutY="8.0" mnemonicParsing="false" fx:id="backBtn"
-                onAction="#backToPreviousPage" prefHeight="26.0" prefWidth="86.0" text="Back" />
+        <Text layoutX="75.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên  :" />
+        <Text fx:id="username" layoutX="140.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+        <Text layoutX="75.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID :" />
+        <Text fx:id="id_Employee" layoutX="140.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+        <Text layoutX="75.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày :" />
+        <Text fx:id="time" layoutX="140.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+        <Button fx:id="backBtn" layoutX="649.0" layoutY="8.0" mnemonicParsing="false" onAction="#backToPreviousPage" prefHeight="26.0" prefWidth="86.0" text="Back" />
     </children>
 </AnchorPane>
