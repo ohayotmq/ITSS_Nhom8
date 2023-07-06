@@ -1321,3 +1321,8 @@ org.postgresql.util.PSQLException: FATAL: database "quanDB" does not exist
 2023-07-07 04:34:41.948 [JavaFX Application Thread] ERROR project.itss.group8.itss.controller.ExportAllOfficersController - Error in ToWorkerView
 2023-07-07 04:34:42.108 [JavaFX Application Thread] ERROR project.itss.group8.itss.controller.ExportAllOfficersController - Error in ToWorkerView
 2023-07-07 04:34:42.275 [JavaFX Application Thread] ERROR project.itss.group8.itss.controller.ExportAllOfficersController - Error in ToWorkerView
+2023-07-07 04:36:13.897 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 04:36:13.903 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 04:36:19.269 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Start login user: 20201111 , pass: 1
+2023-07-07 04:36:19.287 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Login Success
+2023-07-07 04:36:25.663 [JavaFX Application Thread] INFO  project.itss.group8.itss.subsystem.Impl.EmployeeInforRepositoryImpl - Unit ID: 1
