@@ -36,6 +36,45 @@ CREATE TABLE employee(
 	"gender" integer Not NULL
 );
 
+CREATE TABLE worker (
+	"id" integer primary key NOT NULL,
+	"workerName" varchar (50) NOT NULL,
+	"workerID" varchar (50) NOT NULL,
+	"workerUnit" int NOT NULL,
+	"workMonth" int NOT NULL,
+	"workerTotalWorkHour" double precision NOT NULL,
+	"workerTotalOvertimeHour" double precision NOT NULL
+);
+
+CREATE TABLE officer (
+	"id" integer primary key NOT NULL,
+	"officerName" varchar (50) NOT NULL,
+	"officerID" varchar (50) NOT NULL,
+	"officerUnit" int NOT NULL,
+	"workMonth" int NOT NULL,
+	"totalWorkDays" int NOT NULL,
+	"totalFaultHours" double precision NOT NULL
+);
+
+insert into officer values(1, 'Nguyen Tung Lam', 'NV123546', 1, 1, 15, 59.0);
+insert into officer values(2, 'Nguyen Tung Ram', 'NV123646', 1, 1, 11, 1.5);
+insert into officer values(3, 'Nguyen Tung Ramy', 'NV124346', 2, 3, 9, 0.15);
+insert into officer values(4, 'Nguyen Tung Lamu', 'NV126546', 2, 5, 5, 0.60);
+insert into officer values(5, 'Nguyen Tung Ramu', 'NV128546', 3, 7, 8, 0.25);
+insert into officer values(6, 'Nguyen Tung Lama', 'NV126546', 3, 8, 6, 0.20);
+insert into officer values(7, 'Nguyen Tung Rama', 'NV128546', 4, 12, 10, 10.0);
+insert into officer values(8, 'Nguyen Tung Lamma', 'NV193546', 4, 11, 7, 1.0);
+insert into officer values(9, 'Nguyen Tung Lam', 'NV123546', 1, 1, 16, 59.0);
+
+insert into worker values(1, 'Nguyen Tung Ram', 'CN123646', 1, 1, 11.0, 1.5);
+insert into worker values(2, 'Nguyen Tung Ramy', 'CN124346', 2, 3, 90.0, 0.15);
+insert into worker values(3, 'Nguyen Tung Lamu', 'CN126546', 2, 5, 50.0, 0.60);
+insert into worker values(4, 'Nguyen Tung Ramu', 'CN128546', 3, 7, 80.0, 0.25);
+insert into worker values(5, 'Nguyen Tung Lama', 'CN126546', 3, 8, 60.0, 0.20);
+insert into worker values(6, 'Nguyen Tung Rama', 'CN128546', 4, 12, 10.0, 10.0);
+insert into worker values(7, 'Nguyen Tung Lamma', 'CN193546', 4, 11, 70.0, 1.0);
+insert into worker values(8, 'Nguyen Tung Lamma', 'CN193546', 4, 11, 70.0, 1.0);
+
 insert into employee values(20205105,'Nguyen Van Nam','01-05-2002',2,1,1);
 insert into users(id,password) values(20205103,'nam');
 insert into users values(20205104,'123456');
