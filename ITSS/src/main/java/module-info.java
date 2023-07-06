@@ -16,6 +16,9 @@ module project.itss.group11.itss {
     requires org.apache.logging.log4j;
 	requires opencsv;
 	requires javafx.base;
+    requires poi;
+    requires poi.ooxml;
+    requires poi.ooxml.schemas;
 
 
     opens project.itss.group8.itss to javafx.fxml;

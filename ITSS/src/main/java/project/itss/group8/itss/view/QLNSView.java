@@ -39,12 +39,12 @@ public class QLNSView extends TemplateView{
 		// init workspace
 		showHome();
 		
-		Button btn1 = createOptionButton("Thông tin chấm công của tôi");
+		Button btn1 = createOptionButton("Export file chấm công");
                 btn1.setOnMouseClicked(event -> {
 			try {
-				addToWorkspace("XemTQNV.fxml");
+				addToWorkspace("/project/itss/group8/itss/view/manager/ExportAllWorkers.fxml");
 			} catch (IOException e) {
-				logger.error("Error in Employee view", e);
+				e.printStackTrace();
 			}
 		});
 

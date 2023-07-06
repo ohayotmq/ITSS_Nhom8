@@ -6,19 +6,31 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import project.itss.group8.itss.helper.Impl.ViewAllWorkersHelperImpl;
 import project.itss.group8.itss.helper.ViewAllWorkersHelper;
 import project.itss.group8.itss.model.Worker;
-
-import java.io.IOException;
+import project.itss.group8.itss.helper.Impl.OpenFileLocation;
+import java.awt.*;
+import java.io.*;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 
-public class ViewAllWorkersController extends WorkspaceController implements Initializable {
+public class ExportAllWorkersController extends WorkspaceController implements Initializable {
     ObservableList<Worker> workerObservableList = FXCollections.observableArrayList();
     private static final ViewAllWorkersHelper helper = new ViewAllWorkersHelperImpl();
 
@@ -70,6 +82,12 @@ public class ViewAllWorkersController extends WorkspaceController implements Ini
     @FXML
     private TableColumn<Worker, Integer> workerUnit;
 
+    @FXML
+    private Button setFileLocation;
+
+    @FXML
+    private Text pathLocation;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         AnchorPane.setTopAnchor(tableView, 120.0);
@@ -82,7 +100,6 @@ public class ViewAllWorkersController extends WorkspaceController implements Ini
         workMonth.setCellValueFactory(new PropertyValueFactory<>("workMonth"));
         totalWorktime.setCellValueFactory(new PropertyValueFactory<>("workerTotalWorkHour"));
         totalOvertime.setCellValueFactory(new PropertyValueFactory<>("workerTotalOvertimeHour"));
-        viewDetailBtn.setCellFactory(createButtonCellFactory("View", "view-button"));
         workerObservableList = helper.workerObservableList();
         // this.setUpWorkerItems();
         tableView.setItems(workerObservableList);
@@ -168,4 +185,148 @@ public class ViewAllWorkersController extends WorkspaceController implements Ini
     void filterTimekeepingByMonth(ActionEvent event) {
 
     }
+
+
+    @FXML
+    void changeFileLocation(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Export to CSV");
+
+
+//         Set the initial directory (optional)
+         fileChooser.setInitialDirectory(new File("C:/"));
+
+        // Set the file extension filters (optional)
+        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("CSV files (*.csv)", "*.csv");
+        FileChooser.ExtensionFilter excelExtensionFilter = new FileChooser.ExtensionFilter("Excel files (*.xlsx)", "*.xlsx");
+        fileChooser.getExtensionFilters().addAll(extensionFilter, excelExtensionFilter);
+
+        // Show the file chooser dialog
+        Stage stage = (Stage) anchorPane.getScene().getWindow();
+        File file = fileChooser.showSaveDialog(stage);
+
+        if (file != null) {
+            String filePath = file.getAbsolutePath();
+            pathLocation.setText(filePath);
+
+            // Add a listener to the selected extension filter property
+            fileChooser.selectedExtensionFilterProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue != null) {
+                    String newExtension = newValue.getExtensions().get(0);
+                    String newFilePath = file.getAbsolutePath().substring(0, filePath.lastIndexOf('.')) + newExtension;
+                    pathLocation.setText(newFilePath);
+                }
+            });
+        }
+    }
+
+    @FXML
+    void exportToCSV(ActionEvent event) {
+        String filePath = pathLocation.getText();
+        File file = new File(filePath);
+
+        if (file != null) {
+            try {
+                String extension = getFileExtension(file.getName());
+                if (extension.equalsIgnoreCase("csv")) {
+                    exportToCSV(file);
+                } else if (extension.equalsIgnoreCase("xlsx")) {
+                    exportToExcel(file);
+                } else {
+                    System.out.println("Unsupported file extension: " + extension);
+                }
+
+                // Open the folder containing the exported file
+                OpenFileLocation fileLocationOpener = new OpenFileLocation();
+                fileLocationOpener.openFileLocation(file.getParentFile());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void exportToCSV(File file) throws IOException {
+        try (PrintWriter writer = new PrintWriter(new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8))) {
+            TableView.TableViewSelectionModel<Worker> selectionModel = tableView.getSelectionModel();
+            ObservableList<TablePosition> selectedCells = selectionModel.getSelectedCells();
+
+            writer.write('\ufeff');
+
+            // Write table headers
+            TableColumn<Worker, ?>[] columns = new TableColumn[tableView.getColumns().size()];
+            columns = tableView.getColumns().toArray(columns);
+            for (int i = 0; i < columns.length; i++) {
+                writer.print(columns[i].getText());
+                if (i < columns.length - 1) {
+                    writer.print(",");
+                } else {
+                    writer.println();
+                }
+            }
+
+            // Write table data
+            for (Worker worker : tableView.getItems()) {
+                for (int i = 0; i < columns.length; i++) {
+                    TableColumn<Worker, ?> column = columns[i];
+                    Object cellData = column.getCellData(worker);
+                    writer.print(cellData != null ? cellData.toString() : "");
+                    if (i < columns.length - 1) {
+                        writer.print(",");
+                    } else {
+                        writer.println();
+                    }
+                }
+            }
+
+            System.out.println("Data exported to: " + file.getAbsolutePath());
+        }
+    }
+
+    private void exportToExcel(File file) throws IOException {
+        Workbook workbook = new XSSFWorkbook();
+        Sheet sheet = workbook.createSheet("Sheet1");
+
+        // Write table headers
+        Row headerRow = sheet.createRow(0);
+        TableColumn<Worker, ?>[] columns = new TableColumn[tableView.getColumns().size()];
+        columns = tableView.getColumns().toArray(columns);
+        for (int i = 0; i < columns.length; i++) {
+            org.apache.poi.ss.usermodel.Cell headerCell = headerRow.createCell(i);
+            headerCell.setCellValue(columns[i].getText());
+        }
+
+        // Write table data
+        ObservableList<Worker> items = tableView.getItems();
+        for (int rowIdx = 0; rowIdx < items.size(); rowIdx++) {
+            Worker worker = items.get(rowIdx);
+            Row row = sheet.createRow(rowIdx + 1);
+            for (int colIdx = 0; colIdx < columns.length; colIdx++) {
+                TableColumn<Worker, ?> column = columns[colIdx];
+                Cell cell = row.createCell(colIdx);
+                Object cellData = column.getCellData(worker);
+                cell.setCellValue(cellData != null ? cellData.toString() : "");
+            }
+        }
+        try (OutputStream outputStream = new FileOutputStream(file)) {
+            workbook.write(outputStream);
+        }
+
+        workbook.close();
+
+        // Open the folder containing the exported file
+        openFileLocation(file.getParentFile());
+        System.out.println("Data exported to: " + file.getAbsolutePath());
+    }
+    private String getFileExtension(String fileName) {
+        int dotIndex = fileName.lastIndexOf(".");
+        return dotIndex == -1 ? "" : fileName.substring(dotIndex + 1);
+    }
+    private void openFileLocation(File folder) {
+        try {
+            Desktop.getDesktop().open(folder);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
