@@ -8,6 +8,22 @@ public class Officer {
     private int totalWorkDays;
     private double totalFaultHours; // Di muon hoac ve som
 
+    public Officer(
+            String officerName,
+            String officerID,
+            int officerUnit,
+            int workMonth,
+            int totalWorkDays,
+            double totalFaultHours
+    ) {
+        this.officerName = officerName;
+        this.officerID = officerID;
+        this.officerUnit = officerUnit;
+        this.workMonth = workMonth;
+        this.totalWorkDays = totalWorkDays;
+        this.totalFaultHours = totalFaultHours;
+    }
+
     public String getOfficerID() {
         return officerID;
     }

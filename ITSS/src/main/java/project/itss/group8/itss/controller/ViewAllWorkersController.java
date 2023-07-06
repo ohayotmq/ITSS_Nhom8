@@ -2,37 +2,32 @@ package project.itss.group8.itss.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
-import javafx.util.Callback;
 import project.itss.group8.itss.helper.Impl.ViewAllWorkersHelperImpl;
 import project.itss.group8.itss.helper.ViewAllWorkersHelper;
 import project.itss.group8.itss.model.Worker;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.SortedSet;
+import java.util.TreeSet;
+import java.util.function.Predicate;
 
 public class ViewAllWorkersController extends WorkspaceController implements Initializable {
     ObservableList<Worker> workerObservableList = FXCollections.observableArrayList();
     private static final ViewAllWorkersHelper helper = new ViewAllWorkersHelperImpl();
-
-    @FXML
-    private AnchorPane anchorPane;
+    private LocalDate prevSelectedDate = null;
 
     @FXML
     private DatePicker date;
-
-    @FXML
-    private Button filter;
-
-    @FXML
-    private Text name;
 
     @FXML
     private TextField searchBar;
@@ -41,22 +36,13 @@ public class ViewAllWorkersController extends WorkspaceController implements Ini
     private TableView<Worker> tableView;
 
     @FXML
-    private Button toWorkerView;
-
-    @FXML
     private TableColumn<Worker, Double> totalOvertime;
 
     @FXML
     private TableColumn<Worker, Double> totalWorktime;
 
     @FXML
-    private Label unit;
-
-    @FXML
-    private ComboBox<?> unitList;
-
-    @FXML
-    private TableColumn<Worker, Button> viewDetailBtn;
+    private ComboBox<String> unitList;
 
     @FXML
     private TableColumn<Worker, Integer> workMonth;
@@ -82,50 +68,61 @@ public class ViewAllWorkersController extends WorkspaceController implements Ini
         workMonth.setCellValueFactory(new PropertyValueFactory<>("workMonth"));
         totalWorktime.setCellValueFactory(new PropertyValueFactory<>("workerTotalWorkHour"));
         totalOvertime.setCellValueFactory(new PropertyValueFactory<>("workerTotalOvertimeHour"));
-        viewDetailBtn.setCellFactory(createButtonCellFactory("View", "view-button"));
         workerObservableList = helper.workerObservableList();
-        // this.setUpWorkerItems();
+
+        // Set up Data
         tableView.setItems(workerObservableList);
-    }
 
-    void onSearchWorker(ActionEvent event) {
-        if(searchBar != null){
-            try {
-                String filterValue = searchBar.getText();
-            }catch (Exception e){
-                logger.error("Error when search workers: ", e);
-            }
-        }
-    }
+        // Add listener cho row
+        tableView.setRowFactory(tableView -> {
+            TableRow<Worker> row = new TableRow<>();
+            row.setOnMouseClicked(mouseEvent -> {
+                if(mouseEvent.getClickCount() == 2 && (!row.isEmpty())){
+//                    try {
+//
+//                    } catch (IOException e){
+//                        e.printStackTrace();
+//                    }
+                }
+            });
+            return row;
+        });
 
-    private Callback<TableColumn<Worker, Button>, TableCell<Worker, Button>> createButtonCellFactory(String buttonText, String buttonStyleClass){
-        return column -> new TableCell<Worker, Button>() {
-            private final Button button = new Button(buttonText);
+        // Them listener cho searchBar
+        searchBar.textProperty().addListener((
+                (observableValue, oldValue, newValue) -> {
+                    FilteredList<Worker> result = new FilteredList<>(workerObservableList);
+                    Predicate<Worker> filter;
 
-            {
-                button.getStyleClass().add(buttonStyleClass);
-                button.setOnAction(event -> {
-                    Worker worker = getTableRow().getItem();
-                    // Lấy đối tượng Stage hiện tại
-                    try {
-                        String workerName = worker.getWorkerName();
-                        changeWorkspace("/project/itss/group8/itss/view/manager/OverViewEmployeeUnit.fxml");
-                    } catch (IOException e) {
-                        logger.error("Error in createButtonCellFactory ", e);
+                    if (newValue.isBlank()){
+                        filter = null;
+                    } else {
+                        Predicate<Worker> constraint1 = o -> o.getWorkerName().contains(newValue);
+                        Predicate<Worker> constraint2 = o -> o.getWorkerID().contains(newValue);
+                        filter = constraint1.or(constraint2);
                     }
 
-                });
-            }
-            @Override
-            protected void updateItem(Button item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    setGraphic(button);
+                    result.setPredicate(filter);
+                    tableView.setItems(result);
                 }
-            }
-        };
+        ));
+
+        // Setup ComboBox
+        setUpComboBoxItems();
+        unitList.getSelectionModel().select("All");
+        // Them listener cho combobox
+        unitList.getSelectionModel().selectedItemProperty().addListener((
+                (observableValue, oldValue, newValue) -> {
+                    FilteredList<Worker> result = new FilteredList<>(workerObservableList);
+                    Predicate<Worker> constraint;
+
+                    if (newValue == "All") constraint = null;
+                    else constraint = o -> o.getWorkerUnit() == Integer.parseInt(newValue);
+
+                    result.setPredicate(constraint);
+                    tableView.setItems(result);
+                }
+        ));
     }
 
     private void setUpWorkerItems() {
@@ -160,12 +157,36 @@ public class ViewAllWorkersController extends WorkspaceController implements Ini
     }
 
     @FXML
-    void backToPreviousPage(ActionEvent event) {
+    void filterTimekeepingByMonth(ActionEvent event) {
+        LocalDate localDate = date.getValue();
+        FilteredList<Worker> result = new FilteredList<>(workerObservableList);
+        Predicate<Worker> constraint;
 
+        if (localDate != null && prevSelectedDate != localDate) {
+            prevSelectedDate = localDate;
+            int currentMonth = prevSelectedDate.getMonthValue();
+            constraint = w -> w.getWorkMonth() == currentMonth;
+        } else constraint = null;
+
+        result.setPredicate(constraint);
+        tableView.setItems(result);
     }
 
     @FXML
-    void filterTimekeepingByMonth(ActionEvent event) {
+    void toOfficerViewClicked(ActionEvent event) {
+        try {
+            changeWorkspace("/project/itss/group8/itss/view/manager/ViewAllOfficers.fxml");
+        }catch (Exception e) {
+            logger.error("Error in ToOfficerView");
+        }
+    }
 
+    private void setUpComboBoxItems() {
+        SortedSet<String> items = new TreeSet<>();
+        items.add("All");
+        for (Worker o : workerObservableList) {
+            items.add(String.valueOf(o.getWorkerUnit()));
+        }
+        unitList.setItems(FXCollections.observableArrayList(items));
     }
 }
