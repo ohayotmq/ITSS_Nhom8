@@ -66,7 +66,7 @@ public class UpdateController extends WorkspaceController{
         form.setNewDevice(Integer.parseInt(deviceTextField.getText()));
         service.acceptChangeInfor(form);
         try {
-            changeWorkspace("/project/itss/group11/itss/view/EditCC1.fxml");
+            changeWorkspace("/project/itss/group8/itss/view/EditCC1.fxml");
         } catch (IOException e) {
             e.printStackTrace();
         }
