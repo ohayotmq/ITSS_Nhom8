@@ -1,5 +1,6 @@
 package project.itss.group8.itss.view;
 
+import javafx.scene.paint.Color;
 import project.itss.group8.itss.GUIStarter;
 import project.itss.group8.itss.utils.Constant;
 import project.itss.group8.itss.controller.WorkspaceController;
@@ -75,10 +76,12 @@ public abstract class TemplateView {
 	public Button createOptionButton(String option) {
 		Button btn = new Button();
 		btn.setTextAlignment(TextAlignment.CENTER);
+		btn.setStyle("-fx-background-color: #657ef8;");
+		btn.setTextFill(Color.WHITE);
 		btn.setWrapText(true);
 		btn.setMinSize(Control.USE_COMPUTED_SIZE, Control.USE_COMPUTED_SIZE);
 		btn.setPrefSize(Control.USE_COMPUTED_SIZE, Control.USE_COMPUTED_SIZE);
-		btn.setMaxSize(Double.MAX_VALUE, 130);
+		btn.setMaxSize(Double.MAX_VALUE, 72);
 		btn.setText(option);
 		option = option.replaceAll(" ", "-");   
 		btn.setId(option);

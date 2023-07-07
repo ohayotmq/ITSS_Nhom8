@@ -53,9 +53,6 @@ public class OverViewInforEmployeeUnitController extends WorkspaceController {
     private Button filter;
 
     @FXML
-    private TableColumn<TimekeepingOverview, Button> requestingBtn;
-
-    @FXML
     private TableColumn<TimekeepingOverview, String> returnEarly;
 
     @FXML
@@ -93,8 +90,6 @@ public class OverViewInforEmployeeUnitController extends WorkspaceController {
         date.setValue(OverViewInforEmployeeUnitController.localDate);
 
         viewingDetailButton.setCellFactory(createButtonCellFactory("View", "view-button"));
-
-        requestingBtn.setCellFactory(createButtonCellFactory("Request", "request-button"));
 
         if (OverViewInforEmployeeUnitController.localDate != null)
             timekeepingOverviews = service.getTimekeepingByMonth(OverViewInforEmployeeUnitController.localDate,startTime,endTime, employeeID);

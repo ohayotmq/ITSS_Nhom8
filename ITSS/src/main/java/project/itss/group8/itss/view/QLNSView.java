@@ -38,18 +38,9 @@ public class QLNSView extends TemplateView{
 		init();
 		// init workspace
 		showHome();
-		
-		Button btn1 = createOptionButton("Export file chấm công");
-                btn1.setOnMouseClicked(event -> {
-			try {
-				addToWorkspace("/project/itss/group8/itss/view/manager/ExportAllOfficers.fxml");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		});
 
-		Button btn2 = createOptionButton("Xem danh sách nhân viên");
-                btn2.setOnMouseClicked(event -> {
+		Button btn1 = createOptionButton("Xem danh sách nhân viên");
+		btn1.setOnMouseClicked(event -> {
 			try {
 				addToWorkspace("/project/itss/group8/itss/view/manager/ViewEmployeeUnit.fxml");
 			} catch (IOException e) {
@@ -58,8 +49,8 @@ public class QLNSView extends TemplateView{
 			}
 		});
 
-		Button btn3 = createOptionButton("Xem thông tin chấm công tổng hợp");
-		btn3.setOnMouseClicked(event -> {
+		Button btn2 = createOptionButton("Xem thông tin chấm công tổng hợp");
+		btn2.setOnMouseClicked(event -> {
 			try {
 				addToWorkspace("/project/itss/group8/itss/view/manager/ViewAllOfficers.fxml");
 			} catch (IOException e) {
@@ -68,12 +59,21 @@ public class QLNSView extends TemplateView{
 			}
 		});
 
-		Button btn4 = createOptionButton("Xem yêu cầu chỉnh sửa chấm công");
-		btn4.setOnMouseClicked(event -> {
+		Button btn3 = createOptionButton("Xem yêu cầu chỉnh sửa chấm công");
+		btn3.setOnMouseClicked(event -> {
 			try {
 				addToWorkspace("/project/itss/group8/itss/EditCC1.fxml");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
+
+		Button btn4 = createOptionButton("Export file chấm công");
+		btn4.setOnMouseClicked(event -> {
+			try {
+				addToWorkspace("/project/itss/group8/itss/view/manager/ExportAllOfficers.fxml");
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		});
