@@ -1480,3 +1480,7 @@ Caused by: java.lang.NullPointerException: Cannot invoke "javafx.scene.control.T
 2023-07-07 06:58:32.013 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Start login user: 20201111 , pass: 1
 2023-07-07 06:58:32.023 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Login Success
 2023-07-07 06:58:34.299 [JavaFX Application Thread] INFO  project.itss.group8.itss.subsystem.Impl.EmployeeInforRepositoryImpl - Unit ID: 1
+2023-07-07 07:10:23.014 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Create pool
+2023-07-07 07:10:23.017 [JavaFX Application Thread] INFO  project.itss.group8.itss.utils.ConnectionPool - Load conf database OK
+2023-07-07 07:10:34.215 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Start login user: 20201111 , pass: 1
+2023-07-07 07:10:34.242 [JavaFX Application Thread] INFO  project.itss.group8.itss.controller.LoginController - Login Success

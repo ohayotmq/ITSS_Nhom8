@@ -49,7 +49,7 @@ public abstract class TemplateView {
 	}
 	
 	public void showHome() {
-		stage.setTitle("Phần mềm chấm công 4.0");
+		stage.setTitle("Phần mềm chấm công ");
 		stage.setScene(scene);
 		stage.show();
     
