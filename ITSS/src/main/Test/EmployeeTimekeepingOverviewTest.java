@@ -1,12 +1,12 @@
 import org.junit.Assert;
 import org.junit.Test;
 
-import project.itss.group11.itss.helper.IEmployeeTimekeepingOverview;
+import project.itss.group8.itss.helper.IEmployeeTimekeepingOverview;
 
 import java.time.LocalDateTime;
 
 public class EmployeeTimekeepingOverviewTest {
-    IEmployeeTimekeepingOverview employeeTimekeepingOverview = new project.itss.group11.itss.helper.Impl.EmployeeTimekeepingOverviewImpl();
+    IEmployeeTimekeepingOverview employeeTimekeepingOverview = new project.itss.group8.itss.helper.Impl.EmployeeTimekeepingOverviewImpl();
 
     LocalDateTime startTime = LocalDateTime.of(2023, 1, 1, 8, 00, 0);
     LocalDateTime endTime = LocalDateTime.of(2023, 1, 1, 17, 30, 0);

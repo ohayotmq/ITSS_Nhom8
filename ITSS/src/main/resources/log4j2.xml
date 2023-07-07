@@ -14,7 +14,7 @@
 
     <!-- Root logger -->
     <Loggers>
-        <Logger name="project.itss.group11.itss.controller" level="debug">
+        <Logger name="project.itss.group8.itss.controller" level="debug">
             <AppenderRef ref="ConsoleAppender" />
         </Logger>
         <Root level="debug">

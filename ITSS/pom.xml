@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>project.ITSS.group11</groupId>
+    <groupId>project.ITSS.group8</groupId>
     <artifactId>ITSS</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>ITSS</name>
@@ -148,6 +148,17 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.0-RC1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -170,7 +181,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>project.itss.group11.itss/project.itss.group8.itss.GUIStarter</mainClass>
+                            <mainClass>project.itss.group8.itss/project.itss.group8.itss.GUIStarter</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

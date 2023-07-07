@@ -1,4 +1,4 @@
-module project.itss.group11.itss {
+module project.itss.group8.itss {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -19,7 +19,7 @@ module project.itss.group11.itss {
     requires poi;
     requires poi.ooxml;
     requires poi.ooxml.schemas;
-
+//    requires org.junit.jupiter;
 
     opens project.itss.group8.itss to javafx.fxml;
     exports project.itss.group8.itss;
@@ -28,7 +28,6 @@ module project.itss.group11.itss {
     opens project.itss.group8.itss.model to javafx.base;
     
     exports project.itss.group8.itss.view;
-    //opens project.itss.group11.itss.view to javafx.fxml;
 	opens project.itss.group8.itss.view to javafx.graphics, javafx.fxml, javafx.base;
     exports project.itss.group8.itss.subsystem.Impl;
     exports project.itss.group8.itss.subsystem;
